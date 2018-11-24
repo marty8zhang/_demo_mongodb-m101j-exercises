@@ -16,9 +16,7 @@
 
 package com.egghdz.util;
 
-import com.mongodb.MongoClientSettings;
-import com.mongodb.MongoCredential;
-import com.mongodb.ServerAddress;
+import com.mongodb.*;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
@@ -77,15 +75,18 @@ public class Helpers {
 
         MongoClient mongoClient = MongoClients.create(
                     MongoClientSettings.builder()
-//                            .credential(mongoCredential)
-//                            .applyToSslSettings(builder -> builder.enabled(true))
                             .applyToClusterSettings(builder ->
                                         builder.hosts(serverAddresses)
                                                 .requiredReplicaSetName(replicaSetName)
                                     )
+//                            .credential(mongoCredential)
+//                            .applyToSslSettings(builder -> builder.enabled(true))
+//                            .writeConcern(WriteConcern.ACKNOWLEDGED) // See `WriteConcern` for more details.
                             .build()
                 );
         MongoDatabase mongoDatabase = mongoClient.getDatabase(databaseName);
+//        mongoDatabase.withReadPreference(ReadPreference.primaryPreferred());
+//        mongoDatabase.withWriteConcern(WriteConcern.ACKNOWLEDGED); // See `WriteConcern` for more details.
 
         return mongoDatabase.getCollection(collectionName);
     }

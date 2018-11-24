@@ -1,6 +1,8 @@
 package com.egghdz;
 
+import com.mongodb.ReadPreference;
 import com.mongodb.ServerAddress;
+import com.mongodb.WriteConcern;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
 
@@ -23,6 +25,8 @@ public class ExampleReplicaSet {
                     "test",
                     "exampleReplicaSet"
                 );
+//        mongoCollection.withReadPreference(ReadPreference.nearest());
+//        mongoCollection.withWriteConcern(WriteConcern.ACKNOWLEDGED); // See `WriteConcern` for more details.
 
         mongoCollection.drop();
 
