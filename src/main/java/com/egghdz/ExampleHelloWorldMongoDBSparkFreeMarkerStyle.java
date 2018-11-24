@@ -12,10 +12,10 @@ import java.io.StringWriter;
 
 import static spark.Spark.*;
 
-public class HelloWorldMongoDBSparkFreeMarkerStyle {
+public class ExampleHelloWorldMongoDBSparkFreeMarkerStyle {
     public static void main(String[] args) {
         Configuration configuration = new Configuration(Configuration.VERSION_2_3_28);
-        configuration.setClassForTemplateLoading(HelloWorldMongoDBSparkFreeMarkerStyle.class, "/");
+        configuration.setClassForTemplateLoading(ExampleHelloWorldMongoDBSparkFreeMarkerStyle.class, "/");
 
         MongoCollection mgCollection = getCollection("m101j", "ch2");
         mgCollection.drop();

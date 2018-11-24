@@ -13,7 +13,7 @@ import java.util.List;
 
 import static com.mongodb.client.model.Filters.gte;
 
-public class TestAggregate {
+public class ExampleAggregationFramework {
     public static void main(String[] args) {
         test();
     }
